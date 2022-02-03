@@ -6,6 +6,7 @@ import "./home.css";
 import Menu from "../../components/Menu/index";
 import LinkItem from "../../components/LinkItem";
 import api from "../../services/api";
+import { getLinksSave, saveLink } from "../../services/storeLinks";
 
 export default function Home() {
   const [link, setLink] = useState("");
@@ -17,6 +18,7 @@ export default function Home() {
       const response = await api.post("/shorten", { long_url: link });
       setData(response.data);
       setShowModal(true);
+      saveLink("@link", response.data);
       setLink("");
     } catch {
       alert("Erro ao encurtar o link");
@@ -44,7 +46,9 @@ export default function Home() {
         <button onClick={handleShortLink}>Encurtar Link</button>
       </div>
       <Menu />
-      {showModal && <LinkItem closeModal={() => setShowModal(false)} content={data} />}
+      {showModal && (
+        <LinkItem closeModal={() => setShowModal(false)} content={data} />
+      )}
     </div>
   );
 }
