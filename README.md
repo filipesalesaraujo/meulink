@@ -1,6 +1,6 @@
 # Sobre o projeto
 
-Projeto de uma calculadora IMC com o objetivo de reforçar os principios do React.
+Projeto de um encurtador de links, com objetivo de reforçar os principios do ReactJS.
 
 meulink-filipesalesaraujo.vercel.app/
 
